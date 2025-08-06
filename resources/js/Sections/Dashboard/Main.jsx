@@ -1,3 +1,4 @@
+// Sections/Dashboard/Main.jsx
 import {
     PieChart,
     Pie,
@@ -9,10 +10,8 @@ import {
 import Card from "../../Components/Card";
 import { FiUsers, FiBriefcase, FiUserCheck, FiUserX } from "react-icons/fi";
 import LineChartComponent from "../../Components/LineChart";
-import NavigationButton from "../../Components/NavigationButton";
 
 const Main = () => {
-    // Data for doughnut chart
     const distributionData = [
         { name: "Bekerja", value: 62, color: "#3B82F6" },
         { name: "Wirausaha", value: 18, color: "#10B981" },
@@ -22,12 +21,6 @@ const Main = () => {
 
     return (
         <div className="min-h-screen bg-gray-50 p-6">
-            {/* Centered Navigation */}
-            <div className="flex justify-center mb-10">
-                <NavigationButton />
-            </div>
-
-            {/* Card Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 max-w-7xl mx-auto">
                 <Card
                     title="Total Murid"
@@ -58,13 +51,8 @@ const Main = () => {
                     icon={<FiUserCheck className="text-purple-500" />}
                 />
             </div>
-
-            {/* Charts Row */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-7xl mx-auto">
-                {/* Line Chart (you can replace with your LineChartComponent) */}
                 <LineChartComponent />
-
-                {/* Doughnut Chart */}
                 <div className="bg-white p-6 rounded-xl shadow">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">
                         Distribusi Alumni
