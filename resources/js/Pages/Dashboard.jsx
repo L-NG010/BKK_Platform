@@ -2,9 +2,10 @@
 import { Head } from "@inertiajs/react";
 import Header from "../Components/Header";
 import Main from "../Sections/Dashboard/Main";
-import TableStudent from "../Sections/Student/Table";
+import StudentMain from "../Sections/Student/Main";
 import { useState } from "react";
 import NavigationButton from "../Components/NavigationButton";
+
 
 const Home = ({ name, appName }) => {
     const [activeSection, setActiveSection] = useState("Dashboard");
@@ -20,7 +21,7 @@ const Home = ({ name, appName }) => {
                         setActiveSection={setActiveSection}
                     />
                 </div>
-                {activeSection === "Dashboard" ? <Main /> : <TableStudent />}
+                {activeSection === "Dashboard" ? <Main /> : <StudentMain/>}
             </div>
         </div>
     );
