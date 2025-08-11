@@ -2,7 +2,7 @@ import React from "react";
 
 const FirstSection = () => {
     return (
-        <section className="relative flex flex-row items-stretch text-white px-10 pt-5"
+        <section id="firstsection" className="relative flex flex-row items-stretch text-white px-10 pt-5"
             style={{
                 minHeight: '110vh', // proporsi dari figma
                 backgroundImage: 'url(/assets/images/background.png)',
