@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 
-const Breadcrumb = () => {
-  return (
+const Breadcrumb = ({ scrollToFirst }) => (
     <nav
       className="text-xs text-gray-500 mb-4 select-none"
       aria-label="Breadcrumb"
@@ -9,23 +8,17 @@ const Breadcrumb = () => {
       <ol className="list-reset flex">
         <li>
           <button
-            onClick={() => {
-              const el = document.getElementById("firstsection");
-              if (el) el.scrollIntoView({ behavior: "smooth" });
-            }}
+            onClick={scrollToFirst}
             className="hover:underline focus:outline-none"
           >
             BERANDA
           </button>
         </li>
-        <li>
-          <span className="mx-2">{">"}</span>
-        </li>
+        <li><span className="mx-2">{">"}</span></li>
         <li className="font-semibold text-gray-700">INFO</li>
       </ol>
     </nav>
   );
-};
 
 const dummyArticles = [
   {
@@ -57,7 +50,7 @@ const dummyArticles = [
   },
 ];
 
-const InfoSection = () => {
+const InfoSection = forwardRef(({ id, showBreadcrumb }, ref) => {
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 10;
 
@@ -72,11 +65,15 @@ const InfoSection = () => {
   };
 
   return (
-    <section
-      className="container mx-auto py-16 px-6 pt-15 max-w-7xl font-inter"
-      id="firstsection"
-    >
-      <Breadcrumb />
+    <section ref={ref} id={id} className="container mx-auto py-16 px-6 pt-15 max-w-7xl">
+      {showBreadcrumb && (
+        <Breadcrumb
+          scrollToFirst={() => {
+            const el = document.getElementById("firstsection");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}
+        />
+      )}
 
       {/* Header utama */}
       <div className="flex justify-between items-start mb-16">
@@ -123,12 +120,12 @@ const InfoSection = () => {
               <img
                 src={article.image}
                 alt={article.title}
-                className="w-full h-40 object-cover rounded-md mb-4"
+                className="w-full h-50 object-cover mb-4"
               />
               <h4 className="font-bold text-sm uppercase mb-1">
                 {article.title}
               </h4>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm pt-2 text-gray-400">
                 <span className="font-bold">{article.date}</span>, {article.description}
               </p>
             </article>
@@ -180,6 +177,6 @@ const InfoSection = () => {
       </nav>
     </section>
   );
-};
+});
 
 export default InfoSection;
