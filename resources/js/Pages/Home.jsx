@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import Header from "@/components/HomeComponent/Header";
 import FirstSection from "@/components/HomeComponent/FirstSection";
 import InfoSection from "@/components/HomeComponent/InfoSection";
@@ -7,20 +7,30 @@ import Footer from "@/components/HomeComponent/Footer";
 
 const Home = () => {
   const [showBreadcrumb, setShowBreadcrumb] = useState(false);
-  const infoRef = useRef(null);
+  const [showBreadcrumbPorto, setShowBreadcrumbPorto] = useState(false);
 
+  const infoRef = useRef(null);
+  
   const handleGoToInfo = () => {
     setShowBreadcrumb(true); // cuma muncul kalau klik navbar
     infoRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const handleGoToPorto = () => {
+    setShowBreadcrumbPorto(true);
+    const heroEl = document.getElementById("hero");
+  if (heroEl) {
+    heroEl.scrollIntoView({ behavior: "smooth" });
+  }
+};
+
   return (
     <div className="font-general-sans">
-      <Header onInfoClick={handleGoToInfo} />
+      <Header onInfoClick={handleGoToInfo} onPortoClick={handleGoToPorto} />
       <main>
         <FirstSection id="firstsection" />
         <InfoSection ref={infoRef} showBreadcrumb={showBreadcrumb} id="info" />  
-        <PortoSection />  
+        <PortoSection showBreadcrumb={showBreadcrumbPorto} id="" />  
         <Footer />  
       </main>
     </div>

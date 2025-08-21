@@ -1,24 +1,5 @@
 import React, { forwardRef, useState } from "react";
-
-const Breadcrumb = ({ scrollToFirst }) => (
-    <nav
-      className="text-xs text-gray-500 mb-4 select-none"
-      aria-label="Breadcrumb"
-    >
-      <ol className="list-reset flex">
-        <li>
-          <button
-            onClick={scrollToFirst}
-            className="hover:underline focus:outline-none"
-          >
-            BERANDA
-          </button>
-        </li>
-        <li><span className="mx-2">{">"}</span></li>
-        <li className="font-semibold text-gray-700">INFO</li>
-      </ol>
-    </nav>
-  );
+import Breadcrumb from "../Breadcrumb";
 
 const dummyArticles = [
   {

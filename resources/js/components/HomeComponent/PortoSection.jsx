@@ -1,4 +1,5 @@
 import React from "react";
+import Breadcrumb from "../Breadcrumb";
 
 const portofolio = [
   { id: 1, image: "/assets/images/isi-portofolio.png" },
@@ -9,7 +10,7 @@ const portofolio = [
   { id: 6, image: "/assets/images/isi-portofolio.png" },
 ];
 
-const PortoSection = () => {
+const PortoSection = ({ showBreadcrumb }) => {
   return (
     <section>
       <section
@@ -33,7 +34,7 @@ const PortoSection = () => {
 
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-screen">
           <h1 className="font-bold text-white text-[120px] leading-none">PORTOFOLIO</h1>
-          <p className="text-white text-lg pb-8 tracking-wide">BURSA KERJA KHUSUS SMK BRANTAS</p>
+          <p className="text-white text-lg pb-8 mt-4 tracking-widest">BURSA KERJA KHUSUS SMK BRANTAS</p>
         </div>
 
         {/* tombol scroll - kasih z-index supaya gak ketutup overlay */}
@@ -53,6 +54,15 @@ const PortoSection = () => {
 
       {/* DETAIL SECTION */}
       <section id="detail" className="container mx-auto py-16 px-6 max-w-7xl">
+        {showBreadcrumb && (
+        <Breadcrumb
+          scrollToFirst={() => {
+            const el = document.getElementById("firstsection");
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }}
+        />
+      )}
+
         {/* atas: teks kiri/kanan */}
         <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-8">
           <div className="md:w-1/3">
