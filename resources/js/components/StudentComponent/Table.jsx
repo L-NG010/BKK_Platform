@@ -1,152 +1,181 @@
-import React, { useState } from "react";
+// Components/TableStudent.jsx
+import React from "react";
+import { usePage, Link } from "@inertiajs/react";
 
 const TableStudent = () => {
-    const [students, setStudents] = useState([
-        {
-            id: "#3066",
-            status: "Kerja",
-            name: "Olivia Rhy",
-            email: "olivia@unittledu.com",
-            year: 2024,
-        },
-        {
-            id: "#3065",
-            status: "Kuliah",
-            name: "Phoenix Baker",
-            email: "phoenix@unittledu.com",
-            year: 2013,
-        },
-        {
-            id: "#3064",
-            status: "Kuliah",
-            name: "Lana Steiner",
-            email: "lana@unittledu.com",
-            year: 2003,
-        },
-        {
-            id: "#3063",
-            status: "Belum Kerja",
-            name: "Demi Wilkinson",
-            email: "demi@unittledu.com",
-            year: 2009,
-        },
-        {
-            id: "#3062",
-            status: "Entrepreneur",
-            name: "Candice Wu",
-            email: "candice@unittledu.com",
-            year: 6009,
-        },
-        {
-            id: "#3061",
-            status: "Belum Kerja",
-            name: "Natal Craig",
-            email: "natal@unittledu.com",
-            year: 2090,
-        },
-        {
-            id: "#3060",
-            status: "Kerja",
-            name: "Drew Cano",
-            email: "drew@unittledu.com",
-            year: 2023,
-        },
-        {
-            id: "#3059",
-            status: "Kuliah",
-            name: "Orlando Diggs",
-            email: "orlando@unittledu.com",
-            year: 2003,
-        },
-        {
-            id: "#3058",
-            status: "Kuliah",
-            name: "Andi Lane",
-            email: "andi@unittledu.com",
-            year: 2006,
-        },
-        {
-            id: "#3057",
-            status: "Entrepreneur",
-            name: "Kate Morrison",
-            email: "kate@unittledu.com",
-            year: 20012,
-        },
-    ]);
+    const { students } = usePage().props;
+
+    // Fungsi untuk mendapatkan warna status
+    const getStatusColor = (status) => {
+        switch (status) {
+            case 'asn':
+                return 'bg-green-500';
+            case 'klh':
+                return 'bg-yellow-500';
+            case 'wrh':
+                return 'bg-purple-500';
+            case 'swt':
+                return 'bg-blue-500';
+            case 'non job':
+                return 'bg-red-500';
+            default:
+                return 'bg-gray-500';
+        }
+    };
+
+    // Fungsi untuk menerjemahkan status
+    const translateStatus = (status) => {
+        switch (status) {
+            case 'asn':
+                return 'ASN';
+            case 'klh':
+                return 'Kuliah';
+            case 'wrh':
+                return 'Wirausaha';
+            case 'swt':
+                return 'Bekerja Swasta';
+            case 'non job':
+                return 'Belum Bekerja';
+            default:
+                return 'Tidak Diketahui';
+        }
+    };
 
     return (
-        <div className="min-h-screen bg-gray-50 p-6">
-            <div className="max-w-7xl mx-auto">
-                <div className="overflow-x-auto">
-                    <table className="w-full">
-                        <tbody>
-                            {students.map((student) => (
-                                <tr key={student.id} className="border-b">
-                                    <td className="p-2">
-                                        <input type="checkbox" />
+        <div className="max-w-7xl mx-auto">
+            <div className="mb-4 flex justify-between items-center">
+                <h1 className="text-2xl font-bold text-gray-800">Data Siswa</h1>
+                <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-md">
+                    Tambah Siswa
+                </button>
+            </div>
+
+            <div className="overflow-x-auto bg-white rounded-lg shadow">
+                <table className="w-full">
+                    <thead className="bg-gray-100">
+                        <tr>
+                            <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <input type="checkbox" className="rounded" />
+                            </th>
+                            <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                ID
+                            </th>
+                            <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Status
+                            </th>
+                            <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Nama Siswa
+                            </th>
+                            <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Kelas
+                            </th>
+                            <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Jenis Kelamin
+                            </th>
+                            <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Tahun
+                            </th>
+                            <th className="p-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Aksi
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200">
+                        {students && students.data && students.data.length > 0 ? (
+                            students.data.map((student) => (
+                                <tr key={student.id} className="hover:bg-gray-50">
+                                    <td className="p-3">
+                                        <input type="checkbox" className="rounded" />
                                     </td>
-                                    <td className="p-2">{student.id}</td>
-                                    <td className="p-2">
-                                        <span
-                                            className={`inline-block w-3 h-3 rounded-full ${
-                                                student.status === "Kerja"
-                                                    ? "bg-green-500"
-                                                    : student.status ===
-                                                      "Kuliah"
-                                                    ? "bg-yellow-500"
-                                                    : student.status ===
-                                                      "Entrepreneur"
-                                                    ? "bg-purple-500"
-                                                    : "bg-red-500"
-                                            }`}
-                                        ></span>
-                                        {student.status}
-                                    </td>
-                                    <td className="p-2">
+                                    <td className="p-3 font-medium">#{student.id}</td>
+                                    <td className="p-3">
                                         <div className="flex items-center">
-                                            <img
-                                                src={`https://i.pravatar.cc/40?img=${Math.floor(
-                                                    Math.random() * 70
-                                                )}`}
-                                                alt={student.name}
-                                                className="w-10 h-10 rounded-full mr-2"
-                                            />
-                                            <div>
-                                                <div>{student.name}</div>
-                                                <div className="text-gray-500 text-sm">
-                                                    {student.email}
-                                                </div>
+                                            <span
+                                                className={`inline-block w-3 h-3 rounded-full mr-2 ${getStatusColor(student.status)}`}
+                                            ></span>
+                                            <span className="text-sm">{translateStatus(student.status)}</span>
+                                        </div>
+                                    </td>
+                                    <td className="p-3">
+                                        <div>
+                                            <div className="font-medium text-gray-900">
+                                                {student.nama}
+                                            </div>
+                                            <div className="text-gray-500 text-sm">
+                                                {student.nisn ? `NISN: ${student.nisn}` : 'NISN: -'}
                                             </div>
                                         </div>
                                     </td>
-                                    <td className="p-2">{student.year}</td>
-                                    <td className="p-2">
-                                        <button className="text-purple-500 hover:underline">
-                                            Edit
-                                        </button>
+                                    <td className="p-3">{student.kelas || '-'}</td>
+                                    <td className="p-3 capitalize">{student.kelamin || '-'}</td>
+                                    <td className="p-3">{student.tahun || '-'}</td>
+                                    <td className="p-3">
+                                        <div className="flex space-x-2">
+                                            <button className="text-indigo-600 hover:text-indigo-900 text-sm">
+                                                Edit
+                                            </button>
+                                            <button className="text-red-600 hover:text-red-900 text-sm">
+                                                Hapus
+                                            </button>
+                                        </div>
                                     </td>
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                    <div className="flex justify-between mt-4">
-                        <button className="px-4 py-2 bg-gray-200 rounded">
-                            Previous
-                        </button>
-                        <div className="flex space-x-2">
-                            <span>1</span>
-                            <span>2</span>
-                            <span>3</span>
-                            <span>...</span>
-                            <span>8</span>
-                            <span>9</span>
-                            <span>10</span>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="8" className="p-4 text-center text-gray-500">
+                                    Tidak ada data siswa
+                                </td>
+                            </tr>
+                        )}
+                    </tbody>
+                </table>
+
+                {/* Pagination - hanya ditampilkan jika ada data */}
+                {students && students.data && students.data.length > 0 && (
+                    <div className="flex items-center justify-between px-5 py-3 border-t border-gray-200">
+                        <div className="text-sm text-gray-700">
+                            Menampilkan <span className="font-medium">{students.from}</span> hingga <span className="font-medium">{students.to}</span> dari <span className="font-medium">{students.total}</span> hasil
                         </div>
-                        <button className="px-4 py-2 bg-gray-200 rounded">
-                            Next
-                        </button>
+                        <div className="flex space-x-2">
+                            {/* Tombol Previous */}
+                            {students.prev_page_url ? (
+                                <Link
+                                    href={students.prev_page_url}
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
+                                    preserveState
+                                >
+                                    Sebelumnya
+                                </Link>
+                            ) : (
+                                <button
+                                    disabled
+                                    className="px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 rounded-md cursor-not-allowed"
+                                >
+                                    Sebelumnya
+                                </button>
+                            )}
+
+                            {/* Tombol Next */}
+                            {students.next_page_url ? (
+                                <Link
+                                    href={students.next_page_url}
+                                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
+                                    preserveState
+                                >
+                                    Selanjutnya
+                                </Link>
+                            ) : (
+                                <button
+                                    disabled
+                                    className="px-4 py-2 text-sm font-medium text-gray-400 bg-gray-100 rounded-md cursor-not-allowed"
+                                >
+                                    Selanjutnya
+                                </button>
+                            )}
+                        </div>
                     </div>
-                </div>
+                )}
             </div>
         </div>
     );
