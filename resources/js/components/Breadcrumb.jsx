@@ -1,5 +1,3 @@
-import React from "react";
-
 const Breadcrumb = ({ scrollToFirst, label = "INFO" }) => (
   <nav className="text-xs text-gray-500 mb-4 select-none" aria-label="Breadcrumb">
     <ol className="list-reset flex">

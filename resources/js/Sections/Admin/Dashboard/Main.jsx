@@ -7,9 +7,9 @@ import {
     Legend,
     ResponsiveContainer,
 } from "recharts";
-import Card from "../../Components/Card";
+import Card from "../../../Components/Card";
 import { FiUsers, FiBriefcase, FiUserCheck, FiUserX } from "react-icons/fi";
-import LineChartComponent from "../../Components/LineChart";
+import LineChartComponent from "../../../Components/LineChart";
 
 const Main = () => {
     const distributionData = [

@@ -4,7 +4,7 @@ const FirstSection = () => {
     return (
         <section id="firstsection" className="relative flex flex-row items-stretch text-white px-10 pt-5"
             style={{
-                minHeight: '110vh', // proporsi dari figma
+                minHeight: '110vh',
                 backgroundImage: 'url(/assets/images/background.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
@@ -37,7 +37,7 @@ const FirstSection = () => {
                 </p>
                 <p className="text-base ml-10">Telp. (+62)852338789012</p>
                 {/* Button */}
-                <button className="mt-4 px-8 py-4 ml-10 mt-10 bg-white font-bold text-black transition hover:bg-gray-200">
+                <button className="mt-4 px-8 py-4 ml-10 bg-white font-bold text-black transition hover:bg-gray-200">
                     DAFTAR BKK ONLINE
                 </button>
             </div>

@@ -1,5 +1,4 @@
 // Components/TableStudent.jsx
-import React from "react";
 import { usePage, Link } from "@inertiajs/react";
 
 const TableStudent = () => {
@@ -33,7 +32,7 @@ const TableStudent = () => {
             case 'wrh':
                 return 'Wirausaha';
             case 'swt':
-                return 'Bekerja Swasta';
+                return 'Swasta';
             case 'non job':
                 return 'Belum Bekerja';
             default:
