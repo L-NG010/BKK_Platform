@@ -8,6 +8,9 @@ const Header = ({ onInfoClick, onPortoClick }) => {
     const [showLoginCard, setShowLoginCard] = useState(false);
     const loginCardRef = useRef(null);
 
+    const isLoggedIn = auth?.user !== null;
+    const isAdmin = auth?.user?.role === "admin" || "superadmin";
+
     const handleLoginClick = () => {
         setShowLoginCard(!showLoginCard);
     };
@@ -48,22 +51,42 @@ const Header = ({ onInfoClick, onPortoClick }) => {
                             PORTOFOLIO
                         </button>
                     </li>
-                    {auth.user.role == 'admin' ? (<li>
-                        <button
-                             onClick={() => router.visit('/dashboard')}
-                            className="hover:underline focus:outline-none transition-all duration-300 hover:text-blue-300"
-                        >
-                            Dashboard
-                        </button>
-                    </li>):(<li>
-                        <button
-                            onClick={handleLoginClick}
-                            className="hover:underline focus:outline-none transition-all duration-300 hover:text-blue-300"
-                        >
-                            Halo {auth.user.username}
-                        </button>
-                    </li>)}
 
+                    {/* Kondisi untuk user yang belum login */}
+                    {!isLoggedIn && (
+                        <li>
+                            <button
+                                onClick={handleLoginClick}
+                                className="hover:underline focus:outline-none transition-all duration-300 hover:text-blue-300"
+                            >
+                                LOGIN
+                            </button>
+                        </li>
+                    )}
+
+                    {/* Kondisi untuk user admin yang sudah login */}
+                    {isLoggedIn && isAdmin && (
+                        <li>
+                            <button
+                                onClick={() => router.visit("/dashboard")}
+                                className="hover:underline focus:outline-none transition-all duration-300 hover:text-blue-300"
+                            >
+                                DASHBOARD
+                            </button>
+                        </li>
+                    )}
+
+                    {/* Kondisi untuk user biasa yang sudah login */}
+                    {isLoggedIn && !isAdmin && (
+                        <li>
+                            <button
+                                onClick={handleLoginClick}
+                                className="hover:underline focus:outline-none transition-all duration-300 hover:text-blue-300"
+                            >
+                                HALO {auth.user.username.toUpperCase()}
+                            </button>
+                        </li>
+                    )}
                 </ul>
             </nav>
 
