@@ -2,6 +2,7 @@ import { usePage, Link } from "@inertiajs/react";
 
 const TableStudent = () => {
     const { students } = usePage().props;
+    console.log(students[0]);
 
     const getStatusColor = (status) => {
         const statusColors = {

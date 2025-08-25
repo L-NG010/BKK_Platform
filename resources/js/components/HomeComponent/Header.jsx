@@ -104,8 +104,9 @@ useEffect(() => {
                             {showUserMenu && (
                                 <div className="absolute right-0 mt-3 w-48 bg-white text-black rounded-lg shadow-lg py-2 z-50">
                                     <div className="px-4 py-2 border-b border-gray-200">
-                                        <p className="text-sm text-gray-600">Login sebagai {auth.user.role}</p>
                                         <p className="font-semibold mt-0.5 capitalize">{auth.user.username}</p>
+                                        <p className="text-sm text-gray-600">{auth.user.role}</p>
+                                
                                     </div>
                                     <button
                                         onClick={() => router.post("/logout")}

@@ -82,7 +82,7 @@ export default function AuthCard({ onModeSwitch }: AuthCardProps) {
       {/* Card Container */}
       <div className="bg-white rounded-xl shadow-lg border border-blue-100 overflow-hidden">
         {/* Header dengan gradient */}
-        <div className="bg-gradient-to-r from-blue-600 to-indigo-600 p-6 text-center">
+        <div className="bg-blue-800 p-6 text-center">
           <h2 className="text-xl font-bold text-white mb-1">
             {isRegisterMode ? 'Buat Akun Baru' : 'Selamat Datang'}
           </h2>
@@ -154,7 +154,7 @@ export default function AuthCard({ onModeSwitch }: AuthCardProps) {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-4 rounded-xl font-semibold text-lg hover:from-blue-700 hover:to-indigo-700 focus:ring-4 focus:ring-blue-300 transform hover:scale-105 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none shadow-lg hover:shadow-xl"
+                className="w-full bg-blue-800 text-white py-3 px-4 rounded-xl font-semibold text-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 transform hover:scale-105 transition-all duration-200 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none shadow-lg hover:shadow-xl"
               >
                 {isLoading ? (
                   <div className="flex items-center justify-center">
