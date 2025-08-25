@@ -30,11 +30,12 @@ const TableStudent = () => {
 
     return (
         <div className="max-w-7xl mx-10">
-            <div className="mb-6 flex justify-between items-center">
+            <div className="mb-6 flex justify-between items-center mt-5">
                 <h1 className="text-2xl font-bold text-gray-800">Data Siswa</h1>
                 <button className="bg-[#47556c] hover:bg-[#444952] text-white px-4 py-2.5 rounded-lg font-medium transition-colors">
                     Tambah Siswa
                 </button>
+                
             </div>
 
             <div className="overflow-x-auto bg-white rounded-lg shadow">
