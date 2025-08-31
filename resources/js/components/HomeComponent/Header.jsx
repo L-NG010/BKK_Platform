@@ -3,7 +3,7 @@ import LoginCard from "../LoginCard";
 import { usePage } from "@inertiajs/react";
 import { router } from "@inertiajs/react";
 
-const Header = ({ onInfoClick, onPortoClick }) => {
+const Header = ({ onInfoClick, onPortoClick, onLowkerClick }) => {
     const { auth } = usePage().props;
     const [showLoginCard, setShowLoginCard] = useState(false); // untuk popup login
     const [showUserMenu, setShowUserMenu] = useState(false);   // untuk dropdown user
@@ -40,11 +40,11 @@ const Header = ({ onInfoClick, onPortoClick }) => {
     }, []);
 
     // Tutup login card otomatis kalau sudah login
-useEffect(() => {
-    if (isLoggedIn) {
-        setShowLoginCard(false);
-    }
-}, [isLoggedIn]);
+    useEffect(() => {
+        if (isLoggedIn) {
+            setShowLoginCard(false);
+        }
+    }, [isLoggedIn]);
 
     return (
         <header className="fixed top-0 right-0 w-full py-12 px-10 flex justify-end items-center z-50 bg-gradient-to-b from-black/70 to-transparent">
@@ -64,6 +64,14 @@ useEffect(() => {
                             className="hover:underline focus:outline-none transition-all duration-300 hover:text-blue-300"
                         >
                             PORTOFOLIO
+                        </button>
+                    </li>
+                    <li>
+                        <button
+                            onClick={onLowkerClick}
+                            className="hover:underline focus:outline-none transition-all duration-300 hover:text-blue-300"
+                        >
+                            LOWONGAN KERJA
                         </button>
                     </li>
 
@@ -106,7 +114,7 @@ useEffect(() => {
                                     <div className="px-4 py-2 border-b border-gray-200">
                                         <p className="font-semibold mt-0.5 capitalize">{auth.user.username}</p>
                                         <p className="text-sm text-gray-600">{auth.user.role}</p>
-                                
+
                                     </div>
                                     <button
                                         onClick={() => router.post("/logout")}

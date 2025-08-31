@@ -60,6 +60,7 @@ const PortoSection = ({ showBreadcrumb }) => {
             const el = document.getElementById("firstsection");
             if (el) el.scrollIntoView({ behavior: "smooth" });
           }}
+          label="PORTOFOLIO"
         />
       )}
 

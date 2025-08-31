@@ -4,11 +4,13 @@ import FirstSection from "@/components/HomeComponent/FirstSection";
 import InfoSection from "@/components/HomeComponent/InfoSection";
 import PortoSection from "@/components/HomeComponent/PortoSection";
 import Footer from "@/components/HomeComponent/Footer";
+import LowkerSection from "@/components/HomeComponent/LowkerSection";
 import AppLayout from "../Layout/AppLayout";
 
 const Home = () => {
   const [showBreadcrumb, setShowBreadcrumb] = useState(false);
   const [showBreadcrumbPorto, setShowBreadcrumbPorto] = useState(false);
+  const [showBreadcrumbLowker, setShowBreadcrumbLowker] = useState(false);
 
   const infoRef = useRef(null);
 
@@ -20,18 +22,27 @@ const Home = () => {
   const handleGoToPorto = () => {
     setShowBreadcrumbPorto(true);
     const heroEl = document.getElementById("hero");
-  if (heroEl) {
-    heroEl.scrollIntoView({ behavior: "smooth" });
-  }
-};
+    if (heroEl) {
+      heroEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleGoToLowker = () => {
+    setShowBreadcrumbLowker(true);
+    const lowkerEl = document.getElementById("lowker");
+    if (lowkerEl) {
+      lowkerEl.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <div className="font-general-sans">
-      <Header onInfoClick={handleGoToInfo} onPortoClick={handleGoToPorto} />
+      <Header onInfoClick={handleGoToInfo} onPortoClick={handleGoToPorto} onLowkerClick={handleGoToLowker} />
       <main>
         <FirstSection id="firstsection" />
         <InfoSection ref={infoRef} showBreadcrumb={showBreadcrumb} id="info" />
         <PortoSection showBreadcrumb={showBreadcrumbPorto} id="porto" />
+        <LowkerSection showBreadcrumb={showBreadcrumbLowker} id="lowker" />
         <Footer />
       </main>
     </div>
