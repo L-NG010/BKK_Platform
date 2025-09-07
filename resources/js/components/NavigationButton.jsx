@@ -1,8 +1,8 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 const NavigationButton = ({ activeSection, setActiveSection }) => {
     return (
-        <div className="relative flex w-96 bg-white rounded-full border">
+        <div className="relative flex w-96 bg-white rounded-full border border-gray-300 ">
             <div
                 className={`absolute h-full bg-[#0c1e3dc1] rounded-full shadow-sm transition-all duration-300 ${
                     activeSection === "Dashboard"
